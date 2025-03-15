@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Dispute</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        select, textarea, input[type="file"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Freelancer Dispute Form</h2>
+    
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <label for="project">Select Project:</label>
+        <select id="project" name="project">
+            <option value="project1">Project 1</option>
+            <option value="project2">Project 2</option>
+            <option value="project3">Project 3</option>
+        </select>
+
+        <label for="milestone">Select Milestone:</label>
+        <select id="milestone" name="milestone">
+            <option value="milestone1">Milestone 1</option>
+            <option value="milestone2">Milestone 2</option>
+            <option value="milestone3">Milestone 3</option>
+        </select>
+
+        <label for="reason">Reason for Dispute:</label>
+        <textarea id="reason" name="reason" rows="5" placeholder="Explain your dispute here..."></textarea>
+
+        <label for="evidence">Upload Evidence (Screenshots, PDFs, etc.):</label>
+        <input type="file" id="evidence" name="evidence" multiple>
+
+        <button type="submit">Submit Dispute</button>
+    </form>
+
+    <a href="freelancer-dashboard.html" class="back-btn">← Back to Freelancer Dashboard</a>
+</div>
+
+</body>
+</html>
