@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+</head>
+<body>
+    <h1>Client Dashboard</h1>
+    <p>Welcome, Client! Here are your options:</p>
+
+    <button onclick="location.href='post_project.html'">Post a New Project</button>
+    <button onclick="location.href='project_details.html'">View Project Details</button>
+    <button onclick="location.href='milestone_creation.html'">Manage Milestones</button>
+    <button onclick="location.href='dispute_resolution.html'">Resolve Disputes</button>
+    <button onclick="location.href='payment.html'">View Payments</button>
+    <button onclick="location.href='profile.html'">Edit Profile</button>
+    <button onclick="location.href='message_center.html'">Message Center</button>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        function logout() {
+            alert("Logging out...");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

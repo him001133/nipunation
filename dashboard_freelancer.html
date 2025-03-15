@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Dashboard</title>
+</head>
+<body>
+    <h1>Freelancer Dashboard</h1>
+    <p>Welcome, Freelancer! Here are your options:</p>
+
+    <button onclick="location.href='browse_projects.html'">Browse Projects</button>
+    <button onclick="location.href='bid_submission.html'">Submit a Bid</button>
+    <button onclick="location.href='project_progress.html'">Track Project Progress</button>
+    <button onclick="location.href='freelancer payment.html'">View Payments</button>
+    <button onclick="location.href='profile.html'">Edit Profile</button>
+    <button onclick="location.href='message_center.html'">Message Center</button>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        function logout() {
+            alert("Logging out...");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

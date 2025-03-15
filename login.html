@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <br>
+    <button onclick="location.href='signup.html'">Don't have an account? Sign Up</button>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            // Simulate fetching user data (In real case, this should check a database)
+            let storedRole = localStorage.getItem(email); // Get user role from localStorage
+
+            if (!storedRole) {
+                alert("Invalid email or password!");
+                return;
+            }
+
+            alert("Login successful! Redirecting to your dashboard...");
+
+            // Redirect user based on role
+            if (storedRole === "freelancer") {
+                window.location.href = "dashboard_freelancer.html";
+            } else if (storedRole === "client") {
+                window.location.href = "dashboard_client.html";
+            }
+        });
+
+        // Simulated sign-up storage (For demo only)
+        localStorage.setItem("user1@example.com", "freelancer"); // Example freelancer
+        localStorage.setItem("user2@example.com", "client");     // Example client
+    </script>
+</body>
+</html>

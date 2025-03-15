@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a New Project</title>
+    <script>
+        function analyzeKeywords() {
+            let title = document.getElementById("title").value.toLowerCase();
+            let description = document.getElementById("description").value.toLowerCase();
+            let combinedText = title + " " + description;
+
+            let categoryDropdown = document.getElementById("category");
+            categoryDropdown.innerHTML = "<option value=''>-- Select a Category --</option>";
+
+            let categories = {
+                "Graphic Design": ["logo", "branding", "photoshop", "illustrator"],
+                "Web Development": ["website", "app", "frontend", "backend", "API"],
+                "Video Editing": ["video", "editing", "animation", "motion graphics"],
+                "Content Writing": ["writing", "blog", "content", "SEO"],
+                "Marketing": ["social media", "ads", "SEO", "marketing", "campaign"],
+            };
+
+            for (let category in categories) {
+                for (let keyword of categories[category]) {
+                    if (combinedText.includes(keyword)) {
+                        let option = document.createElement("option");
+                        option.value = category;
+                        option.textContent = category;
+                        categoryDropdown.appendChild(option);
+                        break;
+                    }
+                }
+            }
+
+            let customOption = document.createElement("option");
+            customOption.value = "other";
+            customOption.textContent = "Other (Enter Custom Category)";
+            categoryDropdown.appendChild(customOption);
+        }
+
+        function showCustomCategoryInput() {
+            let category = document.getElementById("category").value;
+            let customCategoryDiv = document.getElementById("customCategoryDiv");
+
+            if (category === "other") {
+                customCategoryDiv.style.display = "block";
+            } else {
+                customCategoryDiv.style.display = "none";
+            }
+        }
+
+        function suggestMilestones() {
+            let category = document.getElementById("category").value;
+            let table = document.getElementById("milestoneTable");
+            table.innerHTML = "<tr><th>Milestone</th><th>Amount (INR)</th><th>Action</th></tr>";
+
+            let milestones = {
+                "Graphic Design": ["Initial Sketch", "First Draft", "Final Design"],
+                "Web Development": ["UI Design", "Backend Setup", "Final Deployment"],
+                "Video Editing": ["Rough Cut", "Color Grading", "Final Delivery"],
+                "Content Writing": ["Outline", "First Draft", "Final Submission"],
+                "Marketing": ["Ad Setup", "Campaign Execution", "Performance Report"]
+            };
+
+            if (milestones[category]) {
+                for (let milestone of milestones[category]) {
+                    let row = table.insertRow(-1);
+                    let cell1 = row.insertCell(0);
+                    let cell2 = row.insertCell(1);
+                    let cell3 = row.insertCell(2);
+
+                    cell1.innerHTML = `<input type="text" name="milestone[]" value="${milestone}" required>`;
+                    cell2.innerHTML = `<input type="number" name="amount[]" placeholder="Amount" required>`;
+                    cell3.innerHTML = `<button type="button" onclick="removeMilestone(this)">Remove</button>`;
+                }
+            }
+        }
+
+        function addMilestone() {
+            let table = document.getElementById("milestoneTable");
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+
+            cell1.innerHTML = `<input type="text" name="milestone[]" placeholder="Milestone Name" required>`;
+            cell2.innerHTML = `<input type="number" name="amount[]" placeholder="Amount" required>`;
+            cell3.innerHTML = `<button type="button" onclick="removeMilestone(this)">Remove</button>`;
+        }
+
+        function removeMilestone(btn) {
+            let row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            let title = document.getElementById("title").value;
+            let description = document.getElementById("description").value;
+            let category = document.getElementById("category").value;
+            let customCategory = document.getElementById("customCategory").value;
+
+            let milestones = [];
+            let milestoneInputs = document.getElementsByName("milestone[]");
+            let amountInputs = document.getElementsByName("amount[]");
+
+            for (let i = 0; i < milestoneInputs.length; i++) {
+                milestones.push({
+                    name: milestoneInputs[i].value,
+                    amount: amountInputs[i].value
+                });
+            }
+
+            console.log("Project Posted:", { title, description, category, customCategory, milestones });
+
+            document.getElementById("message").innerHTML = "✅ Project posted successfully! Redirecting...";
+
+            setTimeout(() => {
+                window.location.href = "dashboard_client.html";
+            }, 2000);
+        }
+    </script>
+</head>
+<body>
+    <h1>Post a New Project</h1>
+    <form id="projectForm" onsubmit="submitForm(event)">
+        <label for="title">Project Title:</label><br>
+        <input type="text" id="title" name="title" required oninput="analyzeKeywords()"><br><br>
+
+        <label for="description">Project Description:</label><br>
+        <textarea id="description" name="description" rows="4" required oninput="analyzeKeywords()"></textarea><br><br>
+
+        <label for="category">Suggested Project Category:</label><br>
+        <select id="category" name="category" required onchange="showCustomCategoryInput(); suggestMilestones();">
+            <option value="">-- Select a Category --</option>
+        </select>
+        <br><br>
+
+        <div id="customCategoryDiv" style="display:none;">
+            <label for="customCategory">Enter Custom Category:</label><br>
+            <input type="text" id="customCategory" name="customCategory"><br><br>
+        </div>
+
+        <h2>Milestones</h2>
+        <table id="milestoneTable">
+            <tr>
+                <th>Milestone</th>
+                <th>Amount (INR)</th>
+                <th>Action</th>
+            </tr>
+        </table>
+        <button type="button" onclick="addMilestone()">+ Add Milestone</button><br><br>
+
+        <button type="submit">Post Project</button>
+    </form>
+
+    <p id="message"></p>
+
+    <button onclick="location.href='dashboard_client.html'">Back to Dashboard</button>
+</body>
+</html>

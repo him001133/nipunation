@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Payments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .withdraw-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: green;
+            color: white;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .withdraw-btn:hover {
+            background: darkgreen;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Payment Dashboard</h1>
+
+    <div class="section">
+        <h3>Total Earnings: ₹<span id="totalEarnings">0</span></h3>
+    </div>
+
+    <div class="section">
+        <h3>Pending Payments</h3>
+        <ul id="pendingPayments">
+            <li>No pending payments</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Completed Payments</h3>
+        <ul id="completedPayments">
+            <li>No completed payments</li>
+        </ul>
+    </div>
+
+    <button class="withdraw-btn" onclick="withdrawFunds()">Withdraw Funds</button>
+    <p class="back-btn" onclick="location.href='dashboard.html'">← Back to Dashboard</p>
+</div>
+
+<script>
+    // Dummy data (replace with actual backend data)
+    let earnings = 50000; // Total earnings
+    let pending = [
+        { project: "Website Development", amount: 10000 },
+        { project: "Logo Design", amount: 5000 }
+    ];
+    let completed = [
+        { project: "App UI Design", amount: 20000 },
+        { project: "SEO Optimization", amount: 15000 }
+    ];
+
+    document.getElementById("totalEarnings").textContent = earnings;
+
+    function populateList(id, data) {
+        let list = document.getElementById(id);
+        list.innerHTML = "";
+        data.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = `${item.project} - ₹${item.amount}`;
+            list.appendChild(li);
+        });
+    }
+
+    populateList("pendingPayments", pending);
+    populateList("completedPayments", completed);
+
+    function withdrawFunds() {
+        alert("Withdrawal request submitted!");
+    }
+</script>
+
+</body>
+</html>

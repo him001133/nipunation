@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bid Submission</title>
+    <script>
+        function updateTotal() {
+            let milestoneInputs = document.getElementsByClassName("milestone-bid");
+            let total = 0;
+            for (let input of milestoneInputs) {
+                total += parseFloat(input.value) || 0;
+            }
+            document.getElementById("totalAmount").innerText = total.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Submit a Bid</h1>
+
+    <!-- Project Details -->
+    <div>
+        <h2>Project Title: Website Development</h2>
+        <p><strong>Description:</strong> Build a responsive eCommerce website with payment integration, user authentication, and an admin panel.</p>
+    </div>
+
+    <hr>
+
+    <!-- Bid Submission Form -->
+    <form action="submit_bid.php" method="post">
+        <h3>Bid for Each Milestone</h3>
+
+        <label>Milestone 1: UI/UX Design - $</label>
+        <input type="number" class="milestone-bid" name="milestone1" oninput="updateTotal()" required><br><br>
+
+        <label>Milestone 2: Frontend Development - $</label>
+        <input type="number" class="milestone-bid" name="milestone2" oninput="updateTotal()" required><br><br>
+
+        <label>Milestone 3: Backend Development - $</label>
+        <input type="number" class="milestone-bid" name="milestone3" oninput="updateTotal()" required><br><br>
+
+        <label>Milestone 4: Testing & Deployment - $</label>
+        <input type="number" class="milestone-bid" name="milestone4" oninput="updateTotal()" required><br><br>
+
+        <h3>Total Bid Amount: $<span id="totalAmount">0.00</span></h3>
+
+        <button type="submit">Submit Bid</button>
+    </form>
+
+    <button onclick="location.href='dashboard.html'">Back to Dashboard</button>
+</body>
+</html>

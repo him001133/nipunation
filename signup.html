@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+
+    <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br><br>
+
+        <label for="role">I am a:</label>
+        <select id="role">
+            <option value="freelancer">Freelancer</option>
+            <option value="client">Client</option>
+        </select><br><br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <br>
+    <button onclick="location.href='login.html'">Already have an account? Login</button>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Simulate saving user data (in real case, send data to backend)
+            alert("Signup successful! Redirecting to login...");
+
+            // Redirect to login page
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
