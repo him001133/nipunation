@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Profile - Nipunation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="banner">
+            <img src="banner.jpg" alt="Banner Image">
+        </div>
+        <div class="profile-content">
+            <img class="profile-pic" src="profile.jpg" alt="Profile Picture">
+            
+            <label for="client-name">Name:</label>
+            <input type="text" id="client-name" value="Client Name" disabled>
+
+            <label for="client-bio">Bio:</label>
+            <textarea id="client-bio" disabled>Short introduction about the client</textarea>
+
+            <label for="client-company">Company:</label>
+            <input type="text" id="client-company" value="Company Name" disabled>
+
+            <label for="client-location">Location:</label>
+            <input type="text" id="client-location" value="City, Country" disabled>
+
+            <label for="client-website">Website:</label>
+            <input type="url" id="client-website" value="https://example.com" disabled>
+
+            <label for="total-spent">Total Spent ($):</label>
+            <input type="number" id="total-spent" value="0" disabled>
+
+            <h3>Projects Posted</h3>
+            <ul id="project-list">
+                <li>Project 1 - <a href="#">View</a></li>
+                <li>Project 2 - <a href="#">View</a></li>
+            </ul>
+
+            <h3>Ratings & Reviews</h3>
+            <p>⭐ 4.8/5 (Based on freelancer feedback)</p>
+
+            <button id="edit-btn" onclick="editProfile()">Edit Profile</button>
+            <button id="save-btn" onclick="saveProfile()" style="display: none;">Save Changes</button>
+        </div>
+    </div>
+
+    <script>
+        function editProfile() {
+            document.querySelectorAll("input, textarea").forEach(field => field.disabled = false);
+            document.getElementById("edit-btn").style.display = "none";
+            document.getElementById("save-btn").style.display = "inline-block";
+        }
+
+        function saveProfile() {
+            document.querySelectorAll("input, textarea").forEach(field => field.disabled = true);
+            document.getElementById("edit-btn").style.display = "inline-block";
+            document.getElementById("save-btn").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
