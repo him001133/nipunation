@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Chatbox</title>
+</head>
+<body>
+    <h3>Client Message Center</h3>
+    <div id="chatbox">
+        <p><strong>Freelancer:</strong> I have completed the first milestone.</p>
+        <p><strong>You:</strong> Great! I’ll review it.</p>
+    </div>
+    
+    <input type="text" id="message" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            let message = document.getElementById("message").value;
+            let chatbox = document.getElementById("chatbox");
+            if (message) {
+                chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+                document.getElementById("message").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
