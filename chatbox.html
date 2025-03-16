@@ -1,0 +1,27 @@
+<!-- Chatbox (chatbox.html) -->
+<div id="chatContainer">
+    <div id="chatHeader" onclick="toggleChat()">💬 Chat with Client/Freelancer</div>
+    <div id="chatBox" style="display: none;">
+        <p><strong>Client:</strong> Please update me on the progress.</p>
+    </div>
+    <textarea id="chatInput" placeholder="Type your message..."></textarea>
+    <button onclick="sendChat()">Send</button>
+</div>
+
+<script>
+    function sendChat() {
+        let chatMessage = document.getElementById("chatInput").value;
+        if (chatMessage.trim() !== "") {
+            let chatBox = document.getElementById("chatBox");
+            let newMessage = document.createElement("p");
+            newMessage.innerHTML = `<strong>You:</strong> ${chatMessage}`;
+            chatBox.appendChild(newMessage);
+            document.getElementById("chatInput").value = "";
+        }
+    }
+
+    function toggleChat() {
+        let chatBox = document.getElementById("chatBox");
+        chatBox.style.display = chatBox.style.display === "none" ? "block" : "none";
+    }
+</script>
