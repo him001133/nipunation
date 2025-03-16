@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dispute Page</title>
+</head>
+<body>
+    <h1>Raise a Dispute</h1>
+    <p>If you are facing issues with a freelancer, submit a dispute below.</p>
+
+    <form action="submit_dispute.php" method="post">
+        <label for="project">Select Project:</label>
+        <select id="project" name="project">
+            <option value="project1">Project 1</option>
+            <option value="project2">Project 2</option>
+            <option value="project3">Project 3</option>
+        </select>
+        <br><br>
+
+        <label for="freelancer">Freelancer Name:</label>
+        <input type="text" id="freelancer" name="freelancer" required>
+        <br><br>
+
+        <label for="issue">Describe the Issue:</label><br>
+        <textarea id="issue" name="issue" rows="5" cols="40" required></textarea>
+        <br><br>
+
+        <label for="evidence">Upload Evidence (Optional):</label>
+        <input type="file" id="evidence" name="evidence">
+        <br><br>
+
+        <input type="submit" value="Submit Dispute">
+    </form>
+
+    <br>
+    <button onclick="location.href='client_dashboard.html'">Back to Dashboard</button>
+</body>
+</html>
