@@ -42,18 +42,36 @@
         <label>Skills (comma separated):</label>
         <input type="text" name="skills" value="3D Modeling, Motion Graphics, Character Animation"><br><br>
 
+        <!-- Portfolio Uploads -->
+        <h2>Portfolio</h2>
+        <p>Add your work samples (Images, Videos, or PDFs)</p>
+        <input type="file" accept="image/*,video/*,.pdf" multiple><br><br>
+
         <!-- Portfolio Link -->
-        <label>Portfolio Link:</label>
+        <label>Portfolio Website:</label>
         <input type="url" name="portfolio" value="https://www.behance.net/himanshumittal"><br><br>
 
-        <!-- LinkedIn -->
-        <label>LinkedIn Profile:</label>
-        <input type="url" name="linkedin" value="https://linkedin.com/in/himanshu"><br><br>
+        <!-- Hidden Social Media Links -->
+        <h2>Social Media & Website (Hidden from Clients)</h2>
+        <input type="url" placeholder="LinkedIn Profile" value="https://linkedin.com/in/himanshu">
+        <input type="url" placeholder="GitHub Profile" value="https://github.com/himanshu"><br><br>
+
+        <!-- Client Request for Social Media -->
+        <h3>Client Requests</h3>
+        <button type="button" onclick="requestAccess()">Request Freelancer's Social Media Links</button>
 
         <!-- Submit Button -->
         <button type="submit">Save Changes</button>
     </form>
 
-<iframe src="freelancer_chatbox.html" style="position: fixed; bottom: 0; right: 0; width: 300px; height: 400px; border: 1px solid black;"></iframe>
+    <!-- Chatbox (Fixed on Screen) -->
+    <iframe src="freelancer_chatbox.html" style="position: fixed; bottom: 0; right: 0; width: 300px; height: 400px; border: 1px solid black;"></iframe>
+
+    <script>
+        function requestAccess() {
+            alert("Your request has been sent to the freelancer for approval.");
+        }
+    </script>
+
 </body>
 </html>
