@@ -1,17 +1,23 @@
 {
-  "name": "nipunation",
+  "name": "nipunation-backend",
   "version": "1.0.0",
+  "description": "Backend for Nipunation, powered by Cloudflare Workers and D1",
+  "main": "worker.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "build": "echo \"No build step required\""
+    "start": "wrangler dev",
+    "deploy": "wrangler publish"
   },
   "dependencies": {
-    "express": "4.18.2",
-    "appwrite": "10.0.0",
-    "node-telegram-bot-api": "^0.64.0",
-    "dotenv": "16.0.0"
+    "itty-router": "^3.0.7",
+    "cloudflare-d1": "^0.4.0"
   },
   "devDependencies": {
-    "node-telegram-bot-api": "^0.64.0"
-  }
+    "wrangler": "^3.39.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Himanshu Mittal",
+  "license": "MIT"
 }
