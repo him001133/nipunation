@@ -1,0 +1,8 @@
+name = "nipunation"
+main = "index.html" 
+compatibility_date = "2025-03-23"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nipunation_db"
+database_id = "aed4df89-dba5-42e1-971b-dcbaebd4ab1a"
